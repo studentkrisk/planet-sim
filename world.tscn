@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cihhn0a0otgs6"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_5gigl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g371r"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_24dsc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8tq5q"]
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_5gigl")
+
+[node name="planets" type="Node3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+mass = 25000.0
+gravity_scale = 0.0
+linear_velocity = Vector3(0, 0, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planets/RigidBody3D"]
+shape = SubResource("SphereShape3D_g371r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planets/RigidBody3D"]
+mesh = SubResource("SphereMesh_24dsc")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="planets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+mass = 25000.0
+gravity_scale = 0.0
+linear_velocity = Vector3(0, 0, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planets/RigidBody3D2"]
+shape = SubResource("SphereShape3D_g371r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planets/RigidBody3D2"]
+mesh = SubResource("SphereMesh_8tq5q")
+
+[node name="Camera3D" type="Camera3D" parent="planets/RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
