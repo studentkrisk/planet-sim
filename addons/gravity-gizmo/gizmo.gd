@@ -17,7 +17,3 @@ func _redraw(gizmo):
 	var material : StandardMaterial3D = StandardMaterial3D.new()
 	material.albedo_color = Color.GREEN
 	gizmo.add_lines(lines, material, false)
-
-
-# You should implement the rest of handle-related callbacks
-# (_get_handle_name(), _get_handle_value(), _commit_handle(), ...).

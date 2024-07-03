@@ -14,10 +14,11 @@ script = ExtResource("1_5gigl")
 [node name="planets" type="Node3D" parent="."]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="planets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 29.0004)
 mass = 25000.0
 gravity_scale = 0.0
-linear_velocity = Vector3(0, 0, 3)
+sleeping = true
+linear_velocity = Vector3(0, 0, 0.0951219)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="planets/RigidBody3D"]
 shape = SubResource("SphereShape3D_g371r")
@@ -26,10 +27,11 @@ shape = SubResource("SphereShape3D_g371r")
 mesh = SubResource("SphereMesh_24dsc")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="planets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -29.0004)
 mass = 25000.0
 gravity_scale = 0.0
-linear_velocity = Vector3(0, 0, -3)
+sleeping = true
+linear_velocity = Vector3(0, 0, -0.0951219)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="planets/RigidBody3D2"]
 shape = SubResource("SphereShape3D_g371r")

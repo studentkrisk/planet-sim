@@ -3,9 +3,9 @@
 extends EditorPlugin
 
 
-const MyCustomGizmoPlugin = preload("res://addons/gravity-gizmo/gizmo.gd")
+const gizmo = preload("res://addons/gravity-gizmo/gizmo.gd")
 
-var gizmo_plugin = MyCustomGizmoPlugin.new()
+var gizmo_plugin = gizmo.new()
 
 
 func _enter_tree():
