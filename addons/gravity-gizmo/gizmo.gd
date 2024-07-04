@@ -19,5 +19,5 @@ func _redraw(gizmo):
 	var material : StandardMaterial3D = StandardMaterial3D.new()
 	material.albedo_color = Color.GREEN
 	for i in range(len(positions)-1):
-		print([positions[i].get_child(id).position - node3d.position, positions[i+1].get_child(id).position - node3d.position])
-		gizmo.add_lines(PackedVector3Array([positions[i].get_child(id).position - node3d.position, positions[i+1].get_child(id).position - node3d.position]), material, false)
+		print([positions[i][id].position - node3d.position, positions[i+1][id].position - node3d.position])
+		gizmo.add_lines(PackedVector3Array([positions[i][id].position - node3d.position, positions[i+1][id].position - node3d.position]), material, false)

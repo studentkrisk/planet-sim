@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cihhn0a0otgs6"]
+[gd_scene load_steps=6 format=3 uid="uid://cihhn0a0otgs6"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_5gigl"]
 
@@ -6,7 +6,12 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_24dsc"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_geo6b"]
+radius = 5.0
+
 [sub_resource type="SphereMesh" id="SphereMesh_8tq5q"]
+radius = 5.0
+height = 10.0
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_5gigl")
@@ -14,11 +19,11 @@ script = ExtResource("1_5gigl")
 [node name="planets" type="Node3D" parent="."]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="planets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mass = 25000.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0539322, 0, 16.3505)
+mass = 25.0
 gravity_scale = 0.0
 sleeping = true
-linear_velocity = Vector3(0, 0, 1)
+linear_velocity = Vector3(-10, 0, 0)
 metadata/simpos = [0, [Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
 , Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
 , Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
@@ -47,11 +52,9 @@ shape = SubResource("SphereShape3D_g371r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="planets/RigidBody3D"]
 mesh = SubResource("SphereMesh_24dsc")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="planets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+[node name="sun" type="RigidBody3D" parent="planets"]
 mass = 25000.0
 gravity_scale = 0.0
-linear_velocity = Vector3(0, 0, -1)
 metadata/simpos = [1, [Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
 , Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
 , Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
@@ -74,11 +77,13 @@ metadata/simpos = [1, [Object(Node3D,"_import_path":NodePath(""),"unique_name_in
 , Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
 ]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="planets/RigidBody3D2"]
-shape = SubResource("SphereShape3D_g371r")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="planets/sun"]
+shape = SubResource("SphereShape3D_geo6b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="planets/RigidBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="planets/sun"]
 mesh = SubResource("SphereMesh_8tq5q")
 
-[node name="Camera3D" type="Camera3D" parent="planets/RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+projection = 1
+size = 68.618
