@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_6qj1d"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6lav8"]
-radius = 0.05
+[sub_resource type="BoxShape3D" id="BoxShape3D_df0f6"]
+size = Vector3(0.025, 0.025, 0.05)
 
 [node name="player" type="RigidBody3D"]
 mass = 25.0
@@ -11,6 +11,7 @@ gravity_scale = 0.0
 script = ExtResource("1_6qj1d")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+far = 25000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_6lav8")
+shape = SubResource("BoxShape3D_df0f6")
