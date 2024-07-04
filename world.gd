@@ -1,7 +1,9 @@
 extends Node3D
 
 var editor_mode = false
-var G = 5
+var G = 0.01
+func _ready():
+	Engine.time_scale = 1
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("edit"):
